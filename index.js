@@ -1,50 +1,39 @@
-const ownerElement = document.querySelector('.owner');
-ownerElement.innerText = "Kheldawy"; 
+const newItem1=document.createElement("p");
+newItem1.innerText="Sky Diving in Dubai";
+const bucketList =document.querySelector(".list")
+bucketList.appendChild(newItem1);
 
-const firstItem = document.createElement('p');
-firstItem.innerText = "Travel to Las Vegas"; 
-const listSection = document.querySelector('.list');
-listSection.appendChild(firstItem); 
+const newItem2=document.createElement("p");
+newItem2.innerText="Traviling out side the earth";
+bucketList.insertAdjacentElement("afterbegin",newItem2);
 
+console.log(bucketList.innerHTML);
 
-const secondItem = document.createElement('p');
-secondItem.innerText = "Visit the moon"; 
-listSection.insertAdjacentElement('afterend', secondItem); 
+const newItemHTML="<p>Climbing to the top of Everest</p>";
+// bucketList.innerHTML=newItemHTML;
 
-console.log(listSection.innerHTML);
+bucketList.insertAdjacentHTML("beforeend",newItemHTML);
 
-
-const newItemHTML = "<p>Write a book</p>";
-
-listSection.innerHTML = newItemHTML; 
-
-
-listSection.insertAdjacentHTML('afterbegin', newItemHTML);
-
-
-const additionalItems = ["Visit Japan", "Start a business", "Learn a new language"];
-additionalItems.forEach(item => {
-    const newItem = document.createElement('p');
-    newItem.innerText = item;
-    listSection.appendChild(newItem);
+const items=["Travel the world","Write a book", "Having my own business"]
+items.forEach(item => {
+    const newItem=document.createElement("p");
+    newItem.innerText=item;
+    bucketList.appendChild(newItem);
 });
 
+console.log(`Total items in bucket list: ${bucketList.children.length}`);
 
-console.log(`Total items in bucket list: ${listSection.children.length}`);
+const ownerElement=document.querySelector(".owner");
+ownerElement.innerText = "Kheldawy";
 
+const firstChild=bucketList.firstChild;
+const newFirstItem=document.createElement("p")
+newFirstItem.innerText="Visit Hawaii";
+bucketList.replaceChild(newFirstItem, firstChild);
 
-const firstChild = listSection.firstChild; 
-const newFirstItem = document.createElement('p');
-newFirstItem.innerText = "Visit NY";
-listSection.replaceChild(newFirstItem, firstChild); 
-
-
-const middleIndex = Math.floor(listSection.children.length / 2);
-const middleChild = listSection.children[middleIndex]; 
-const newMiddleItem = document.createElement('p');
-newMiddleItem.innerText = "Travel around the world";
-listSection.replaceChild(newMiddleItem, middleChild); 
+const newMiddleItem=document.createElement("p");
+newMiddleItem.innerText="Have one billion $"
+bucketList.replaceChild(newMiddleItem, bucketList.children[3]);
 
 
-const lastElement = listSection.lastChild; 
-listSection.removeChild(lastElement); 
+bucketList.removeChild(bucketList.children[6]);
